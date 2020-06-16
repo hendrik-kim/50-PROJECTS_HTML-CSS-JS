@@ -41,7 +41,7 @@ namespace Talent.Web
             });
 
             services.AddScoped<IPostRepository, PostRepository>();
-            services.AddScoped<IAppUserRepository, ApplicationUserService>();
+            services.AddScoped<IAppUserRepository, ApplicationUserRepository>();
             services.AddAutoMapper(typeof(PostMapper));
         }
 
