@@ -1,22 +1,40 @@
 import React, { Fragment, useState } from 'react';
+import axios from 'axios';
 
 const Register = () => {
   const [formData, setFormData] = useState({
-    name: '',
+    username: '',
     email: '',
     password: '',
-    password2: '',
+    confirmPassword: '',
   });
-  const { name, email, password, password2 } = formData;
+  const { username, email, password, confirmPassword } = formData;
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    if (password !== password2) {
+    if (password !== confirmPassword) {
       console.log('Passwords do not match');
     } else {
-      console.log(formData);
+      const newUser = {
+        username,
+        email,
+        password,
+      };
+      try {
+        const config = {
+          header: {
+            'Content-Type': 'application/json; charset=utf-8',
+          },
+        };
+        const body = JSON.stringify(newUser);
+        console.log(body);
+        const res = await axios.post('account/register', body, config);
+        console.log(res.data);
+      } catch (err) {
+        console.error(err.response.data);
+      }
     }
   };
   return (
@@ -29,9 +47,9 @@ const Register = () => {
         <div className="form-group">
           <input
             type="text"
-            placeholder="Name"
-            name="name"
-            value={name}
+            placeholder="username"
+            name="username"
+            value={username}
             onChange={(e) => onChange(e)}
             required
           />
@@ -64,8 +82,8 @@ const Register = () => {
           <input
             type="password"
             placeholder="Confirm Password"
-            name="password2"
-            value={password2}
+            name="confirmPassword"
+            value={confirmPassword}
             onChange={(e) => onChange(e)}
             minLength="6"
           />

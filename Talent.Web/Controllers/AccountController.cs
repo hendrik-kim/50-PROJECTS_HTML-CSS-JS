@@ -64,7 +64,7 @@ namespace Talent.Web.Controllers
         [HttpPost]
         [AllowAnonymous]
         //[ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register([FromBody] UserRegisterViewModel model/*, string returnUrl = null*/)
+        public async Task<IActionResult> Register([FromQuery] UserRegisterViewModel model/*, string returnUrl = null*/)
         {
             if (ModelState.IsValid)
             {
