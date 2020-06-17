@@ -1,6 +1,6 @@
 {
-  "short_name": "Talent.Web",
-  "name": "Talent.Web",
+  "short_name": "clientapp",
+  "name": "clientapp",
   "icons": [
     {
       "src": "favicon.ico",
