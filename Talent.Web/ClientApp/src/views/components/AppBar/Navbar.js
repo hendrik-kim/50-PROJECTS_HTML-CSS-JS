@@ -1,13 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 function NavBar(props) {
-  const {} = props;
+  const { handlePopup } = props;
   return (
     <Container>
-      <NavItem to={'/register'}>sign Up</NavItem>
-      <NavItem to={'/login'}>sign In</NavItem>
+      <div
+        onClick={() => {
+          handlePopup((v) => !v);
+        }}
+      >
+        Popup
+      </div>
+      <NavItem to={"/register"}>sign Up</NavItem>
+      <NavItem to={"/login"}>sign In</NavItem>
     </Container>
   );
 }

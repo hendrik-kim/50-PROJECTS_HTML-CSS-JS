@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import NavBar from './Navbar';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import styled from "styled-components";
+import NavBar from "./Navbar";
+import { Link } from "react-router-dom";
 
 function AppBar(props) {
-  const {} = props;
+  const { handlePopup } = props;
   return (
     <Container>
-      <Logo to={'/'}>logo</Logo>
-      <NavBar />
+      <Logo to={"/"}>logo</Logo>
+      <NavBar handlePopup={handlePopup} />
     </Container>
   );
 }
