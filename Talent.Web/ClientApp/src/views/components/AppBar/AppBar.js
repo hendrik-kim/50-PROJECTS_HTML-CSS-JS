@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import NavBar from './Navbar';
+import { Link } from 'react-router-dom';
 
 function AppBar(props) {
   const {} = props;
   return (
     <Container>
-      <Logo>logo</Logo>
+      <Logo to={'/'}>logo</Logo>
       <NavBar />
     </Container>
   );
@@ -20,12 +21,16 @@ const Container = styled.div`
   padding: 0 50px;
 `;
 
-const Logo = styled.div`
+const Logo = styled(Link)`
   display: flex;
   align-items: center;
   font-size: 22px;
   text-transform: uppercase;
   cursor: pointer;
+  color: #333;
+  &:hover {
+    color: #3c9afd;
+  }
 `;
 
 export default AppBar;
