@@ -1,20 +1,25 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import { appActions } from '../../../redux/createActions';
 
 function NavBar(props) {
   const { handlePopup } = props;
   return (
     <Container>
       <div
-        onClick={() => {
-          handlePopup((v) => !v);
-        }}
+        onClick={() =>
+          appActions.updateState({
+            popup: {
+              title: 'This is title',
+            },
+          })
+        }
       >
-        Popup
+        pop-up
       </div>
-      <NavItem to={"/register"}>sign Up</NavItem>
-      <NavItem to={"/login"}>sign In</NavItem>
+      <NavItem to={'/register'}>sign Up</NavItem>
+      <NavItem to={'/login'}>sign In</NavItem>
     </Container>
   );
 }

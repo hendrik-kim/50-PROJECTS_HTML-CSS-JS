@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
 
 function Popup(props) {
-  const { onClose } = props;
+  const { title, onClose } = props;
   return (
     <Container onClick={onClose}>
-      <Content>Pop-up</Content>
+      <Content>{title}</Content>
     </Container>
   );
 }
