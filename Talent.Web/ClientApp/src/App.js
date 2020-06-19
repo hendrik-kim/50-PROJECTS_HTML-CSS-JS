@@ -7,7 +7,7 @@ import AppBar from './views/components/AppBar/Index';
 import styled from 'styled-components';
 import Register from './views/components/auth/Register';
 import Login from './views/components/auth/Login';
-import Home from './views/pages/Home/Home';
+import Home from './views/pages/Home/Index';
 import Page404 from './views/pages/Result/Page404';
 import Post from './views/pages/Post/Index';
 import Popup from './views/components/Popup/Index';
@@ -29,7 +29,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={Login} />
-        <Route exact path="/post" component={Post} />
+        <Route path="/post" component={Post} />
 
         <Route component={Page404} />
       </Switch>

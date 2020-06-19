@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 function List(props) {
   const {} = props;
+
   useEffect(() => {}, []);
+
   return (
     <Container>
       <PostItem>
