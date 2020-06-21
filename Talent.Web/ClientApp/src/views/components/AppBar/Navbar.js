@@ -7,17 +7,6 @@ function NavBar(props) {
   const { handlePopup } = props;
   return (
     <Container>
-      <div
-        onClick={() =>
-          appActions.updateState({
-            popup: {
-              title: 'This is title',
-            },
-          })
-        }
-      >
-        pop-up
-      </div>
       <NavItem to={'/register'}>sign Up</NavItem>
       <NavItem to={'/login'}>sign In</NavItem>
     </Container>
@@ -37,7 +26,8 @@ const NavItem = styled(Link)`
   cursor: pointer;
   color: #333;
   &:hover {
-    color: #3c9afd;
+    border-bottom: #28a745 2px solid;
+    transition: 0.1s;
   }
 `;
 

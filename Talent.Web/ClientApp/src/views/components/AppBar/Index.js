@@ -1,19 +1,25 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-import NavBar from "./Navbar";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
+import NavBar from './Navbar';
+import { Link } from 'react-router-dom';
 
 function AppBar(props) {
   const { handlePopup } = props;
   return (
     <Container>
-      <Logo to={"/"}>logo</Logo>
+      <Logo to={'/'}>
+        <span class="text-primary">
+          <i class="fas fa-handshake"></i> Talent
+        </span>
+        Exchange
+      </Logo>
       <NavBar handlePopup={handlePopup} />
     </Container>
   );
 }
 
 const Container = styled.div`
+  background: #fff;
   height: 70px;
   border-bottom: 1px solid #ddd;
   display: flex;
@@ -25,11 +31,14 @@ const Logo = styled(Link)`
   display: flex;
   align-items: center;
   font-size: 22px;
-  text-transform: uppercase;
   cursor: pointer;
   color: #333;
+  &-text-primary {
+    color: #28a745;
+  }
   &:hover {
-    color: #3c9afd;
+    transition-duration: 0.3s;
+    color: #28a745;
   }
 `;
 

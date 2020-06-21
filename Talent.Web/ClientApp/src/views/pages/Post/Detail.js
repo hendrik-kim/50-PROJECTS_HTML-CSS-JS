@@ -9,7 +9,7 @@ function Detail(props) {
   const id = match.params.id;
 
   useEffect(() => {
-    // 비동기 통신 id를 이용해서
+    // Async trans Id
   }, [match]);
 
   if (!id) {
