@@ -19,25 +19,26 @@ const Register = () => {
       console.log('Passwords do not match');
     } else {
       const newUser = {
-        username,
-        email,
-        password,
+        Username: username,
+        Email: email,
+        Password: password,
       };
       try {
         const config = {
           header: {
-            'Content-Type': 'application/json; charset=utf-8',
+            'Content-Type': 'text/json',
           },
         };
         const body = JSON.stringify(newUser);
-        console.log(body);
-        const res = await axios.post('account/register', body, config);
+        console.log(newUser);
+        const res = await axios.post('account/register', newUser, config);
         console.log(res.data);
       } catch (err) {
         console.error(err.response.data);
       }
     }
   };
+
   return (
     <Fragment>
       <Container>

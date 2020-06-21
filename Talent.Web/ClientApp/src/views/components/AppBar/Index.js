@@ -8,8 +8,8 @@ function AppBar(props) {
   return (
     <Container>
       <Logo to={'/'}>
-        <span class="text-primary">
-          <i class="fas fa-handshake"></i> Talent
+        <span className="text-primary">
+          <i className="fas fa-handshake"></i> Talent
         </span>
         Exchange
       </Logo>

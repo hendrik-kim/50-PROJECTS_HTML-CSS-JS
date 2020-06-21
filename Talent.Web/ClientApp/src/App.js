@@ -5,8 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import AppBar from './views/components/appBar/Index';
 import styled from 'styled-components';
-import Register from './views/components/auth/Register';
-import Login from './views/components/auth/Login';
+import Register from './views/pages/auth/Register';
+import Login from './views/pages/auth/Login';
 import Home from './views/pages/home/Index';
 import Page404 from './views/pages/result/Page404';
 import Post from './views/pages/post/Index';

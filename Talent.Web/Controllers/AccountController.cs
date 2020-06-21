@@ -3,9 +3,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Talent.Data.Models;
 using Talent.Web.ViewModels;
 
@@ -30,7 +28,7 @@ namespace Talent.Web.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task<IActionResult> Login([FromBody] LoginViewModel model, string returnUrl)
+        public async Task<IActionResult> Login([FromForm] LoginViewModel model, string returnUrl)
         {
             if (ModelState.IsValid)
             {
@@ -64,18 +62,18 @@ namespace Talent.Web.Controllers
         [HttpPost]
         [AllowAnonymous]
         //[ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register([FromQuery] UserRegisterViewModel model/*, string returnUrl = null*/)
+        public async Task<IActionResult> Register([FromBody]RegisterViewModel model/*, string returnUrl = null*/)
         {
+            var user = new ApplicationUser { 
+                UserName = model.Username, 
+                Email = model.Email,
+                CreatedOn = DateTime.Now,
+                //IsActive = true 
+            };
+            var result = await _userManager.CreateAsync(user, model.Password);
+
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { 
-                    UserName = model.Username, 
-                    Email = model.Email, 
-                    //CreatedOn = DateTime.Now, 
-                    //IsActive = true 
-                };
-                var result = await _userManager.CreateAsync(user, model.Password);
-
                 if (result.Succeeded)
                 {
                     //_logger.LogInformation("User created a new account with password.");
@@ -91,10 +89,10 @@ namespace Talent.Web.Controllers
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     return Ok("User created.");
 
-                    foreach (var error in result.Errors)
-                    {
-                        ModelState.AddModelError(string.Empty, error.Description);
-                    }
+                    //foreach (var error in result.Errors)
+                    //{
+                    //    ModelState.AddModelError(string.Empty, error.Description);
+                    //}
 
                     //var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     //var confirmationLink = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, token = token }, Request.Scheme);
@@ -103,11 +101,10 @@ namespace Talent.Web.Controllers
                     //_logger.LogInformation("User created a new account with password.");
                     //return RedirectToLocal(returnUrl);
                 }
-
                 //AddErrors(result);
                 // If we got this far, something failed, redisplay form
             }
-            return RedirectToAction("Index", "Home");
+            return Ok(result.Succeeded);
         }
     }
 }

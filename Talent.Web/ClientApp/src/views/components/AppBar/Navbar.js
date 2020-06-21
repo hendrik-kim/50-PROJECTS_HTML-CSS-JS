@@ -26,7 +26,7 @@ const NavItem = styled(Link)`
   cursor: pointer;
   color: #333;
   &:hover {
-    border-bottom: #28a745 2px solid;
+    border-bottom: #28a745 3px solid;
     transition: 0.1s;
   }
 `;
