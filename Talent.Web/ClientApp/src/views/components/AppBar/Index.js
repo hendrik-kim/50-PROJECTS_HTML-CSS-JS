@@ -9,9 +9,9 @@ function AppBar(props) {
     <Container>
       <Logo to={'/'}>
         <span className="text-primary">
-          <i className="fas fa-handshake"></i> Talent
+          <i className="fas fa-handshake"></i>
         </span>
-        Exchange
+        Talent Exchange
       </Logo>
       <NavBar handlePopup={handlePopup} />
     </Container>
@@ -25,6 +25,7 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 0 50px;
+  max-height: 75px;
 `;
 
 const Logo = styled(Link)`
@@ -33,8 +34,9 @@ const Logo = styled(Link)`
   font-size: 22px;
   cursor: pointer;
   color: #333;
-  &-text-primary {
+  .text-primary {
     color: #28a745;
+    margin-right: 5px;
   }
   &:hover {
     transition-duration: 0.3s;

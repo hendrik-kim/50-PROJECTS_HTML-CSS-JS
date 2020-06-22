@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const Register = () => {
@@ -26,10 +27,10 @@ const Register = () => {
       try {
         const config = {
           header: {
-            'Content-Type': 'text/json',
+            'Content-Type': 'application/json',
           },
         };
-        const body = JSON.stringify(newUser);
+        // const body = JSON.stringify(newUser);
         console.log(newUser);
         const res = await axios.post('account/register', newUser, config);
         console.log(res.data);
@@ -44,7 +45,7 @@ const Register = () => {
       <Container>
         <div id="container">
           <form className="form-wrap" onSubmit={(e) => onSubmit(e)}>
-            <h1 className="large text-primary">Sign Up</h1>
+            {/* <h1 className="large text-primary">Sign Up</h1> */}
             <p className="lead">
               <i className="fas fa-user"></i> Create Your Account
             </p>
@@ -94,7 +95,7 @@ const Register = () => {
           </form>
           <footer>
             <p className="my-1">
-              Already have an account? <a href="login.html">Sign In</a>
+              Already have an account? <Link to="/login">Sign In</Link>
             </p>
           </footer>
         </div>
